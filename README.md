@@ -21,9 +21,13 @@ Or install it yourself as:
 ## Usage
 
 require 'aws-sdk'
+
 require 's3encrypt'
+
 S3encrypt.putfile("filename", "bucket", "context", "masterkmskey")
+
 S3encrypt.getfile("filename", "bucket", "context")
+
 
 ## Development
 
