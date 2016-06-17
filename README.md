@@ -1,9 +1,7 @@
 # S3encrypt
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/s3encrypt`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
-
+This Gem allows the encrypted upload or download of files from S3.
+It's the gemified version of https://github.com/DonMills/ruby-KMS-S3
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -22,7 +20,10 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+require 'aws-sdk'
+require 's3encrypt'
+S3encrypt.putfile("filename", "bucket", "context", "masterkmskey")
+S3encrypt.getfile("filename", "bucket", "context")
 
 ## Development
 
