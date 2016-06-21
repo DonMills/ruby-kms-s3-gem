@@ -24,9 +24,9 @@ require 'aws-sdk'
 
 require 's3encrypt'
 
-S3encrypt.putfile("filename", "bucket", "context", "masterkmskey")
+S3encrypt.putfile("local_filename", "remote_filename", "bucket", "context", "masterkmskey")
 
-S3encrypt.getfile("filename", "bucket", "context")
+S3encrypt.getfile("local_filename", "remote_filename", "bucket", "context")
 
 
 ## Development
