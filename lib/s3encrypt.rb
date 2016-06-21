@@ -44,8 +44,8 @@ module S3encrypt
   # decoded on download...gave invalidciphertext exception
   #########################################
 
-  def self.upload_key(s3client,newkeyblob,filename,bucket)
-      keyfile_name= filename+ ".key"
+  def self.upload_key(s3client,newkeyblob,remote_filename,bucket)
+      keyfile_name= remote_filename+ ".key"
       newkeyblob64 = Base64.encode64(newkeyblob)
     s3client.put_object({
       body: newkeyblob64,
@@ -55,13 +55,13 @@ module S3encrypt
   end
 
 
-  def self.upload_file(s3client,plaintext_key,filename,bucket)
+  def self.upload_file(s3client,plaintext_key,local_filename,remote_filename,bucket)
     begin
-      filebody = File.new(filename)
+      filebody = File.new(local_filename)
       s3enc = Aws::S3::Encryption::Client.new(encryption_key: plaintext_key,
                                               client: s3client)
       res = s3enc.put_object(bucket: bucket,
-                             key: filename,
+                             key: remote_filename,
                              body: filebody)
     rescue Aws::S3::Errors::ServiceError => e
       puts "upload failed: #{e}"
@@ -90,30 +90,30 @@ module S3encrypt
       return keyval64
   end
 
-  def self.fetch_file(s3client,plaintext_key,filename,bucket)
+  def self.fetch_file(s3client,plaintext_key,local_filename,remote_filename,bucket)
     begin
       s3enc = Aws::S3::Encryption::Client.new(encryption_key: plaintext_key,
                                               client: s3client)
       res = s3enc.get_object(bucket: bucket,
-                             key: filename,
-                             response_target: filename)
+                             key: remote_filename,
+                             response_target: local_filename)
     rescue Aws::S3::Errors::ServiceError => e
       puts "upload failed: #{e}"
     end
   end
 
-  def self.getfile(filename, bucket, app_context)
+  def self.getfile(local_filename, remote_filename, bucket, app_context)
     s3client = Aws::S3::Client.new(region: 'us-east-1')
-    keyval= fetch_key(s3client,filename,bucket)
+    keyval= fetch_key(s3client,remote_filename,bucket)
     keyvalue = decrypt_key(keyval,app_context)
-    fetch_file(s3client,keyvalue,filename,bucket)
+    fetch_file(s3client,keyvalue,local_filename,remote_filename,bucket)
   end
 
-  def self.putfile(filename, bucket, app_context, master_key)
+  def self.putfile(local_filename, remote_filename, bucket, app_context, master_key)
     newkeyblob, newkeyplain = fetch_new_key(app_context, master_key)
     #write_enc_key(newkeyblob,filename)
     s3client = Aws::S3::Client.new(region: 'us-east-1')
-    upload_key(s3client,newkeyblob,filename,bucket)
-    upload_file(s3client,newkeyplain,filename,bucket)
+    upload_key(s3client,newkeyblob,remote_filename,bucket)
+    upload_file(s3client,newkeyplain,local_filename,remote_filename,bucket)
   end
 end
