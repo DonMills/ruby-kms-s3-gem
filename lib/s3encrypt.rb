@@ -50,7 +50,8 @@ module S3encrypt
     s3client.put_object({
       body: newkeyblob64,
       key: keyfile_name,
-      bucket: bucket
+      bucket: bucket,
+      server_side_encryption: "aws:kms"      
       })
   end
 
@@ -62,7 +63,8 @@ module S3encrypt
                                               client: s3client)
       res = s3enc.put_object(bucket: bucket,
                              key: remote_filename,
-                             body: filebody)
+                             body: filebody,
+                             server_side_encryption: "aws:kms")
     rescue Aws::S3::Errors::ServiceError => e
       puts "upload failed: #{e}"
     end
