@@ -20,13 +20,24 @@ Or install it yourself as:
 
 ## Usage
 
+```ruby
 require 'aws-sdk'
-
 require 's3encrypt'
-
 S3encrypt.putfile("local_filename", "remote_filename", "bucket", "context", "masterkmskey")
-
 S3encrypt.getfile("local_filename", "remote_filename", "bucket", "context")
+```
+
+To do kms managed SSE:
+
+```ruby
+S3encrypt.putfile_ssekms("local_filename", "remote_filename", "bucket", "context", "masterkmskey")
+```
+
+To do S3 managed SSE:
+
+```ruby
+S3encrypt.putfile_sses3("local_filename", "remote_filename", "bucket", "context", "masterkmskey")
+```
 
 
 ## Development
