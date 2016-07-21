@@ -39,6 +39,7 @@ S3encrypt.putfile_sses3("local_filename", "remote_filename", "bucket", "context"
 ```
 
 When Using EC2 roles:
+
 Don't forget to set the region (usually as an environment variable) as the SDK will not extrapolate it from the metadata...
 
 ## Development
