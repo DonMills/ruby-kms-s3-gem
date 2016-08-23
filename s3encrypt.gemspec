@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Don Mills"]
   spec.email         = ["don.mills@gmail.com"]
 
-  spec.summary       = %q{This Gem encrypts and uploads a file to s3, or the reverse.}
+  spec.summary       = %q{This Gem encrypts and uploads a file to s3 with a KMS generated key, or the reverse.}
   
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  #spec.homepage      = "TODO: Put your gem's website or public repo URL here."
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
