@@ -115,7 +115,7 @@ module S3encrypt
                              key: remote_filename,
                              response_target: local_filename)
     rescue Aws::S3::Errors::ServiceError => e
-      puts "upload failed: #{e}"
+      puts "retrieval failed: #{e}"
     end
   end
 
