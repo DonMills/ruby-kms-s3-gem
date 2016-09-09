@@ -126,6 +126,24 @@ module S3encrypt
     fetch_file(s3client,keyvalue,local_filename,remote_filename,bucket)
   end
 
+  #########################################
+  # Helper method that bypasses writing a file to the system and returns a JSON object
+  # More for accessiing the data programatically so that a file does not have to be written and cleand up
+  #########################################
+  def self.getfile_as_json(remote_filename, bucket, app_context)
+    resp = getfile(nil, remote_filename, bucket, app_context)
+    return JSON.parse(resp.body.string)
+  end
+  
+  #########################################
+  # Helper method that bypasses writing a file to the system and returns a JSON object
+  # More for accessiing the data programatically so that a file does not have to be written and cleand up
+  #########################################
+  def self.getfile_as_string(remote_filename, bucket, app_context)
+    resp = getfile(nil, remote_filename, bucket, app_context)
+    return resp.body.string
+  end
+
   def self.putfile(local_filename, remote_filename, bucket, app_context, master_key, sse="none")
     newkeyblob, newkeyplain = fetch_new_key(app_context, master_key)
     #write_enc_key(newkeyblob,filename)

@@ -24,6 +24,8 @@ Or install it yourself as:
 require 's3encrypt'
 S3encrypt.putfile("local_filename", "remote_filename", "bucket", "context", "masterkmskey")
 S3encrypt.getfile("local_filename", "remote_filename", "bucket", "context")
+S3encrypt.getfile_as_json("remote_filename", "bucket", "context")
+S3encrypt.getfile_as_string("remote_filename", "bucket", "context")
 ```
 
 To do kms managed SSE:
