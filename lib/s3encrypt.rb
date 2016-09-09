@@ -128,7 +128,7 @@ module S3encrypt
 
   #########################################
   # Helper method that bypasses writing a file to the system and returns a JSON object
-  # More for accessiing the data programatically so that a file does not have to be written and cleand up
+  # More for accessiing the data programatically so that a file does not have to be written and cleaned up
   #########################################
   def self.getfile_as_json(remote_filename, bucket, app_context)
     resp = getfile(nil, remote_filename, bucket, app_context)
@@ -136,8 +136,8 @@ module S3encrypt
   end
   
   #########################################
-  # Helper method that bypasses writing a file to the system and returns a JSON object
-  # More for accessiing the data programatically so that a file does not have to be written and cleand up
+  # Helper method that bypasses writing a file to the system and returns a string
+  # More for accessiing the data programatically so that a file does not have to be written and cleaned up
   #########################################
   def self.getfile_as_string(remote_filename, bucket, app_context)
     resp = getfile(nil, remote_filename, bucket, app_context)
