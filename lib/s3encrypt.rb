@@ -1,6 +1,7 @@
 require "s3encrypt/version"
 require 'aws-sdk'
 require 'base64'
+require 'json'
 
 module S3encrypt
   ########################################
