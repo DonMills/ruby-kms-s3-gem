@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/s3encrypt@2x.svg)](https://badge.fury.io/rb/s3encrypt) [![Code Climate](https://codeclimate.com/github/DonMills/ruby-kms-s3-gem/badges/gpa.svg)](https://codeclimate.com/github/DonMills/ruby-kms-s3-gem) [![Inline docs](http://inch-ci.org/github/DonMills/ruby-kms-s3-gem.svg?branch=master&style=shields)](http://inch-ci.org/github/DonMills/ruby-kms-s3-gem)
+
 # S3encrypt
 
 This Gem allows the encrypted upload or download of files from S3.
@@ -58,4 +60,3 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/DonMil
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
