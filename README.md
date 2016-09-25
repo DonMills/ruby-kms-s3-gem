@@ -2,8 +2,11 @@
 
 # S3encrypt
 
-This Gem allows the encrypted upload or download of files from S3.
-It's the gemified version of https://github.com/DonMills/ruby-KMS-S3
+This Gem allows the encrypted upload or download of files from S3 using KMS generated encryption keys.
+It's the gemified version of https://github.com/DonMills/ruby-KMS-S3.
+
+There's an in-depth blog post describing what this does and how it does it at http://www.singlestoneconsulting.com/blog/2016/september/secrets-management.
+
 ## Installation
 
 Add this line to your application's Gemfile:
